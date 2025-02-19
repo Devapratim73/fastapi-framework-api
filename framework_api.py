@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from deep_translator import GoogleTranslator
 
 # ✅ Load environment variables
 load_dotenv()
@@ -48,6 +49,11 @@ async def generate_framework(request: FrameworkRequest):
         "topic": request.topic,
         "framework_prompt": generated_prompt
     }
+
+# ✅ Initialize Google Translator
+translator = GoogleTranslator(source="auto", target="en")
+translation = translator.translate("Bonjour")
+print(translation)  # Output: Hello
 
 # ✅ Run Uvicorn Server (Only when run directly)
 if __name__ == "__main__":
