@@ -1,7 +1,7 @@
 fastapi
 uvicorn
-httpx  # No fixed version to allow dependency resolution
-chromadb
-deep-translator  # Alternative to googletrans
-langchain-openai
-
+httpx==0.13.3  # Ensures compatibility with googletrans
+chromadb==0.3.26  # Downgraded to avoid httpx>=0.27.0 conflict
+googletrans==4.0.0-rc1
+langchain  # Add the main LangChain library
+langchain-openai  # Ensure this is installed for OpenAI integration
